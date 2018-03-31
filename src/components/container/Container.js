@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import FetchCoinData from '../../redux/actions/FetchCoinData';
+import CoinCard from '../card/CoinCard';
 
 class Container extends Component {
     componentDidMount() {
@@ -22,13 +24,36 @@ class Container extends Component {
             />
         ) 
     }
-    
+
     render() {
+        const { crypto } = this.props;
+        const { contentContainer } = styles;
+
+        if (crypto.isFetching) {
+            return (
+                <View>
+                    <Spinner
+                        visible={crypto.isFetching}
+                        textContent={"Loading..."}
+                        textStyle={{color: '#253145'}}
+                        animation="fade"
+                    />
+                </View>
+            )
+        }
+
         return (
-            <View>
-                <Text>Container</Text>
-            </View>
+            <ScrollView contentContainerStyle={contentContainer}>
+                {this.renderCoinCards()}
+            </ScrollView>
         )
+    }
+}
+
+const styles = {
+    contentContainer: {
+        paddingBottom: 100,
+        paddingTop: 55
     }
 }
 

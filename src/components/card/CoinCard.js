@@ -5,6 +5,7 @@ import {
     Text, 
     StyleSheet 
 } from 'react-native';
+import Icons from '../../assets/icons';
 
 
 const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_change_7d }) => {
@@ -13,7 +14,7 @@ const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_ch
             <View style={upperRow}>
                 <Image
                     style={styles.image}
-                    source={require(`../../assets/${symbol}.png`)}
+                    source={Icons[symbol]}
                 />
                 <Text style={coinSymbol}>{symbol}</Text>
                 <Text style={seperator}>|</Text>
