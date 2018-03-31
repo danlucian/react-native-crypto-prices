@@ -1,12 +1,30 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-export default class Header extends Component {
+class Header extends Component {
   render() {
     return (
-        <View>
-            <Text>Cryptocurrency prices</Text>
+        <View style={headerContainer}>
+            <Text style={header}>
+                Cryptocurrency prices
+            </Text>
         </View>
     )
   }
 };
+
+const styles = StyleSheet.create({
+    headerContainer: {
+        display: 'flex',
+        marginTop: 64,
+        alignItems: 'center',
+    },
+    header: {
+        fontWeight: 'bold',
+        fontSize: 18,
+    }
+});
+
+const { headerContainer, header } = styles;
+
+export default Header;
