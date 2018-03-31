@@ -5,7 +5,7 @@ import {
     Text, 
     StyleSheet 
 } from 'react-native';
-import Icons from '../../assets/icons';
+import Icons from '@assets/icons';
 
 
 const CoinCard = ({ symbol, coin_name, price_usd, percent_change_24h, percent_change_7d }) => {
